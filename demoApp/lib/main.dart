@@ -1,3 +1,4 @@
+import 'package:demoApp/quote.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,10 +13,17 @@ class QuoteList extends StatefulWidget {
 }
 
 class _QuoteListState extends State<QuoteList> {
-  List<String> quotes = [
-    'Contrary to popular belief, Lorem Ipsum is not simply random text',
-    'It has roots in a piece of classical Latin literature from 45 BC,',
-    'making it over 2000 years old. Richard McClintock, a Latin',
+  List<Quote> quotes = [
+    Quote(
+        quote:
+            'Contrary to popular belief, Lorem Ipsum is not simply random text',
+        author: "Elvin Osmanov"),
+    Quote(
+        quote: "ontrary to popular belief, Lorem Ipsum is ",
+        author: "Emin Qaralov"),
+    Quote(
+        quote: 'making it over 2000 years old. Richard McClintock, a Latin',
+        author: "Nermin Osmanova"),
   ];
   @override
   Widget build(BuildContext context) {
@@ -25,7 +33,9 @@ class _QuoteListState extends State<QuoteList> {
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: quotes.map((quote) => Text(quote)).toList(),
+        children: quotes
+            .map((quote) => Text("${quote.author}:  ${quote.quote}\n"))
+            .toList(),
       ),
     );
   }
