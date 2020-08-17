@@ -15,27 +15,57 @@ class QuoteList extends StatefulWidget {
 class _QuoteListState extends State<QuoteList> {
   List<Quote> quotes = [
     Quote(
-        quote:
-            'Contrary to popular belief, Lorem Ipsum is not simply random text',
+        quote: 'Menim adim Osmanov Elvindir Bes senin adin',
         author: "Elvin Osmanov"),
     Quote(
-        quote: "ontrary to popular belief, Lorem Ipsum is ",
+        quote: "Menim adim Osmanov Elvindir Bes senin adin",
         author: "Emin Qaralov"),
     Quote(
-        quote: 'making it over 2000 years old. Richard McClintock, a Latin',
+        quote: 'Menim adim Osmanov Elvindir Bes senin adin',
         author: "Nermin Osmanova"),
   ];
+
+  Widget quoteTemplate(Quote quote) {
+    return Card(
+      margin: EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0),
+      child: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              quote.quote,
+              style: TextStyle(
+                color: Colors.grey[600],
+                fontSize: 18.0,
+              ),
+            ),
+            SizedBox(
+              height: 6.0,
+            ),
+            Text(
+              quote.author,
+              style: TextStyle(
+                color: Colors.grey[800],
+                fontSize: 14.0,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[200],
       appBar: AppBar(
         title: Text("Awesome Quotes"),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: quotes
-            .map((quote) => Text("${quote.author}:  ${quote.quote}\n"))
-            .toList(),
+        children: quotes.map((quote) => quoteTemplate(quote)).toList(),
       ),
     );
   }
