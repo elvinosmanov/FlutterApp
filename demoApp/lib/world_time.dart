@@ -18,7 +18,7 @@ class WorldTime {
       Map data = jsonDecode(response.body);
       String datetime = data['datetime'];
       DateTime date = DateTime.parse(datetime);
-      time = DateFormat.yMMMEd().add_jms().format(date);
+      time = DateFormat.jm().format(date);
     } catch (e) {
       print("Error: $e");
       time = "Could not get time";
