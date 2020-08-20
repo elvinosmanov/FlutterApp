@@ -1,4 +1,4 @@
-import 'package:demoApp/world_time.dart';
+import 'package:demoApp/services/world_time.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
@@ -8,6 +8,8 @@ class Loading extends StatefulWidget {
 }
 
 class _LoadingState extends State<Loading> {
+  String time = "Loading Screen";
+
   void setupWorldTime() async {
     WorldTime instance =
         WorldTime(location: "London", url: "Europe/London", flag: "London.png");

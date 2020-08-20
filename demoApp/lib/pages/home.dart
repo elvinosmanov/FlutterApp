@@ -10,8 +10,11 @@ class _HomeState extends State<Home> {
   String imageUrl;
   @override
   Widget build(BuildContext context) {
-    data = ModalRoute.of(context).settings.arguments;
-
+    data = data.isNotEmpty ? data : ModalRoute.of(context).settings.arguments;
+    // data = ;
+    // if (data.isEmpty) {
+    //   data = ModalRoute.of(context).settings.arguments;
+    // }
     imageUrl = data['isDayTime'] ? "day.png" : 'night.png';
 
     return Scaffold(
@@ -28,8 +31,17 @@ class _HomeState extends State<Home> {
             child: Column(
               children: <Widget>[
                 FlatButton.icon(
-                    onPressed: () {
-                      Navigator.pushNamed(context, "/location");
+                    onPressed: () async {
+                      dynamic result =
+                          await Navigator.pushNamed(context, "/location");
+                      setState(() {
+                        data = {
+                          'time': result['time'],
+                          'location': result['location'],
+                          'isDayTime': result['isDayTime'],
+                          'flag': result['flag'],
+                        };
+                      });
                     },
                     icon: Icon(Icons.edit_location),
                     label: Text("Edit Location")),
